@@ -1,0 +1,129 @@
+.data
+#soma
+n1: .asciiz "Digite o primeiro numero: "
+n2: .asciiz "Digite o segundo numero: "
+n3: .asciiz "Digite o terceiro numero: "
+n4: .asciiz "Digite o quarto numero: "
+
+soma: .asciiz "perimetro ( soma dos 4 lados ) = "
+
+.text
+li $v0, 4
+la $a0, n1
+syscall
+
+li $v0, 5
+syscall
+move $t0, $v0
+
+li $v0, 4
+la $a0, n2
+syscall
+
+li $v0, 5
+syscall
+move $t1, $v0
+
+li $v0, 4
+la $a0, n3
+syscall
+
+li $v0, 5
+syscall
+move $t2, $v0
+
+li $v0, 4
+la $a0, n4
+syscall
+
+li $v0, 5
+syscall
+move $t3, $v0
+
+add $t5, $t0, $t1
+li $v0, 4
+add $t6, $t2, $t3
+li $v1, 4
+
+add $t7, $t6, $t5
+li $v0, 4
+
+la $a0, soma
+syscall
+
+li $v0, 1
+move $a0, $t7
+syscall
+----------------------------------------------------------------------#---------------------------------------------------------
+
+.data
+kp:	.asciiz "Digite o Km percorrido: "
+kf:	.asciiz "Km finais = "
+
+.text
+li $v0, 4	
+la $a0, kp	
+syscall		
+li $v0, 5	
+syscall 	
+move $t0, $v0	
+li $t1, 15	
+sub $t2, $t1, $t0
+
+li $v0, 4	
+la $a0, kf	
+syscall
+li $v0, 1
+la $a0, ($t2)	
+syscall	
+
+---------------------------------------------------------#--------------------------------------------------------------------------------------------
+
+.data
+numero: 	.asciiz "Digite um número: "
+cubo: 	.asciiz "O cubo é = "
+.text
+li $v0, 4		
+la $a0, numero
+syscall			
+li $v0, 5		
+syscall
+move $t1, $v0		
+mul $t2, $t1, $t1
+mul $t3, $t1, $t2	
+li $v0, 4			
+la $a0, cubo		
+syscall
+li $v0, 1			
+la $a0, ($t3)		
+syscall
+li $v0, 10			
+syscall
+
+---------------------------------------------------------------------------#-------------------------------------------------
+.data
+x: .asciiz "Digie o valor de X: "
+y: .asciiz "Digite o valor de Y: "
+z: .asciiz "O resultado de X/Y = "
+.text
+li $v0, 4	
+la $a0, x	
+syscall		
+li $v0, 5	
+syscall		
+move $t1, $v0	
+li $v0, 4
+la $a0, y	
+syscall
+li $v0, 5		
+syscall
+move $t2, $v0	
+div $t3, $t1, $t2	
+li $v0, 4	
+la $a0, z	
+syscall		
+li $v0, 1	
+la $a0, ($t3)	
+syscall
+li $v0, 10	
+syscall
